@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ServiTec Pmá | Soluciones Técnicas Integrales</title>
+  <meta name="description" content="ServiTec Pmá – Electricidad, Mecánica Automotriz y Desarrollo Web en Panamá. Soluciones técnicas confiables y profesionales.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+
+<body>
+
+<div class="theme-btn" onclick="toggleTheme()">☀️</div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<!-- ================= MENU LATERAL ================= -->
+<div class="menu" id="menu">
+  <div class="back" onclick="toggleMenu()">← Volver</div>
+
+  <a href="https://instagram.com/" target="_blank">Instagram</a>
+
+  <div class="submenu-toggle" onclick="toggleSubmenu()">
+  Servicios ▾
+  </div>
+  <div id="submenu" style="display:none; padding-left:15px;">
+    <a href="electricidad/index.html">Eléctrico 🔌</a>
+    <a href="mecanica/index.html">Mecánico 👩‍🔧</a>
+    <a href="desarrollo-web/index.html">Dev 💻</a>
+  </div>
+
+  <a href="soporte/index.html">Soporte</a>
+  <a href="sobre-nosotros/index.html">Sobre Nosotros</a>
+
+  <!-- Número oculto -->
+  <a href="tel:+50769799261" style="display:none;">+507 6979-9261</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+
+  <div class="hero-content">
+    <h1>ServiTec Pmá</h1>
+    <p>
+      Soluciones Técnicas Integrales en Panamá.<br>
+      Electricidad, Mecánica Automotriz y Desarrollo Digital.
+    </p>
+
+    <div class="cta" style="margin-top:30px">
+      <a href="#servicios" class="btn">Explorar Servicios</a>
+    </div>
+  </div>
+
+</header>
+
+<!-- ================= QUIÉNES SOMOS ================= -->
+<section class="fade">
+  <h2>¿Quiénes somos?</h2>
+  <div class="box">
+    ServiTec Pmá nace como una empresa de soluciones técnicas integrales,
+    combinando experiencia eléctrica, mantenimiento automotriz y desarrollo
+    tecnológico bajo una estructura organizada y profesional.
+    <br><br>
+    Nuestro enfoque se basa en diagnóstico claro, ejecución responsable
+    y atención personalizada.
+  </div>
+</section>
+
+<!-- ================= SERVICIOS ================= -->
+<section id="servicios" class="fade">
+  <h2>Nuestras Divisiones</h2>
+
+  <div class="grid grid-2">
+
+    <div class="pilar">
+      <h3>División Eléctrica 🔌</h3>
+      <p>
+        Instalaciones residenciales, mantenimiento,
+        diagnóstico técnico y soluciones industriales.
+      </p>
+      <br>
+      <a href="electricidad/index.html" class="btn">Ver más</a>
+    </div>
+
+    <div class="pilar">
+      <h3>División Mecánica 👩‍🔧</h3>
+      <p>
+        Diagnóstico automotriz, mantenimiento preventivo
+        y reparaciones con responsabilidad técnica.
+      </p>
+      <br>
+      <a href="mecanica/index.html" class="btn">Ver más</a>
+    </div>
+
+    <div class="pilar">
+      <h3>División Dev 💻</h3>
+      <p>
+        Desarrollo de páginas web profesionales,
+        optimizadas y listas para posicionamiento.
+      </p>
+      <br>
+      <a href="desarrollo-web/index.html" class="btn">Ver más</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= PROCESO ================= -->
+<section class="fade">
+  <h2>Nuestro Proceso</h2>
+  <div class="box">
+    1️⃣ Visita técnica y diagnóstico inicial ($20)<br>
+    2️⃣ Cotización clara y transparente<br>
+    3️⃣ Ejecución profesional<br>
+    4️⃣ Entrega y seguimiento
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="fade">
+  <h2>Solicita tu evaluación técnica</h2>
+  <div class="box" style="text-align:center">
+    Contáctanos para evaluar tu proyecto y ofrecerte
+    una solución clara, eficiente y profesional.
+    <br><br>
+    <a href="soporte/index.html" class="btn">Solicitar Visita</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  © 2026 ServiTec Pmá · Soluciones Técnicas Integrales · Panamá
+</footer>
+
+<script src="assets/js/app.js" defer></script>
+
+<script>
+function toggleSubmenu(){
+  const sub = document.getElementById("submenu");
+  const isOpen = sub.style.display === "block";
+  sub.style.display = isOpen ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
