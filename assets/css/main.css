@@ -179,6 +179,62 @@ body.dark .box{
   cursor:pointer;
 }
 
+/* =========================
+   FORMULARIO SOLICITUD
+========================= */
+
+body.solicitud-voluntariado{
+  background:var(--gris);
+  color:#111;
+}
+
+body.solicitud-voluntariado header{
+  padding:90px 20px 80px;
+  text-align:center;
+}
+
+body.solicitud-voluntariado header h1{
+  font-size:3rem;
+  margin:0;
+}
+
+body.solicitud-voluntariado header p{
+  max-width:900px;
+  margin:25px auto 0;
+  font-size:1.15rem;
+  line-height:1.9;
+}
+
+/* caja del formulario */
+
+.voluntariado-box{
+  max-width:520px;
+  margin:0 auto;
+  padding:40px;
+  border-radius:18px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+/* inputs */
+
+.voluntariado-box input,
+.voluntariado-box textarea{
+  padding:14px 18px;
+  border-radius:10px;
+  border:1px solid #bbb;
+  font-size:1rem;
+  width:100%;
+}
+
+/* texto pequeño */
+
+.voluntariado-box small{
+  font-size:.8rem;
+  opacity:.7;
+}
+
 /* ========= HERO ========= */
 
 .hero{
@@ -347,5 +403,6 @@ body.menu-open .theme-btn{
   .box{
     padding:28px;
   }
+
 
 }
