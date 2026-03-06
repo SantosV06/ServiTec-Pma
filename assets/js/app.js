@@ -10,6 +10,12 @@ if (savedTheme === "dark" && !document.body.classList.contains("casas")) {
   }
 }
 
+function toggleSubmenu(){
+  const sub = document.getElementById("submenu");
+  const isOpen = sub.style.display === "block";
+  sub.style.display = isOpen ? "none" : "block";
+}
+
 function toggleTheme(){
   document.body.classList.toggle("dark");
 
