@@ -48,6 +48,7 @@ header{
   border-bottom:4px solid var(--dorado);
   display:flex;
   align-items:center;
+  justify-content: center;
   gap:25px;
 }
 
@@ -92,13 +93,13 @@ section{
   max-width:1100px;
   margin:80px auto;
   padding:0 20px;
+  text-align:center;
 }
 
 section h2{
   font-size:1.8rem;
   margin-bottom:25px;
   color:var(--dorado);
-  border-left:6px solid var(--rojo);
   padding-left:15px;
 }
 
@@ -177,62 +178,6 @@ body.dark .box{
   z-index:1100;
   font-size:1.6rem;
   cursor:pointer;
-}
-
-/* =========================
-   FORMULARIO SOLICITUD
-========================= */
-
-body.solicitud-voluntariado{
-  background:var(--gris);
-  color:#111;
-}
-
-body.solicitud-voluntariado header{
-  padding:90px 20px 80px;
-  text-align:center;
-}
-
-body.solicitud-voluntariado header h1{
-  font-size:3rem;
-  margin:0;
-}
-
-body.solicitud-voluntariado header p{
-  max-width:900px;
-  margin:25px auto 0;
-  font-size:1.15rem;
-  line-height:1.9;
-}
-
-/* caja del formulario */
-
-.voluntariado-box{
-  max-width:520px;
-  margin:0 auto;
-  padding:40px;
-  border-radius:18px;
-  display:flex;
-  flex-direction:column;
-  gap:16px;
-}
-
-/* inputs */
-
-.voluntariado-box input,
-.voluntariado-box textarea{
-  padding:14px 18px;
-  border-radius:10px;
-  border:1px solid #bbb;
-  font-size:1rem;
-  width:100%;
-}
-
-/* texto pequeño */
-
-.voluntariado-box small{
-  font-size:.8rem;
-  opacity:.7;
 }
 
 /* ========= HERO ========= */
