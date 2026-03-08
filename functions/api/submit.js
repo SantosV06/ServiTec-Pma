@@ -1,17 +1,6 @@
-/* =========================================
-   SERVITEC PMÁ
-   API: /api/submit
-   Maneja solicitudes de evaluación técnica
-   Cloudflare Pages Function
-========================================= */
+export async function onRequestPost(context){
 
-export async function onRequestPost(context) {
-
-  try {
-
-    /* =========================================
-       1. OBTENER DATOS DEL FORMULARIO
-    ========================================= */
+  try{
 
     const formData = await context.request.formData()
 
@@ -20,99 +9,47 @@ export async function onRequestPost(context) {
     const correo = formData.get("correo")
     const mensaje = formData.get("mensaje")
 
-
-    /* =========================================
-       2. VALIDACIÓN BÁSICA
-    ========================================= */
-
     if(!nombre || !telefono || !correo){
       return new Response(
-        JSON.stringify({
-          ok:false,
-          error:"Faltan campos obligatorios"
-        }),
-        { status:400 }
+        JSON.stringify({ok:false,error:"Campos obligatorios faltantes"}),
+        {status:400}
       )
     }
 
-    /* validar longitud mínima */
+    const fecha = new Date().toISOString()
+    const ip = context.request.headers.get("CF-Connecting-IP") || "unknown"
 
-    if(nombre.length < 2){
-      return new Response(
-        JSON.stringify({
-          ok:false,
-          error:"Nombre demasiado corto"
-        }),
-        { status:400 }
-      )
-    }
+    /* insertar en base */
 
-
-    /* =========================================
-       3. CREAR OBJETO DE SOLICITUD
-    ========================================= */
-
-    const solicitud = {
-
-      nombre: nombre.trim(),
-
-      telefono: telefono.trim(),
-
-      correo: correo.trim(),
-
-      mensaje: mensaje ? mensaje.trim() : "",
-
-      fecha: new Date().toISOString(),
-
-      ip: context.request.headers.get("CF-Connecting-IP") || "desconocida"
-
-    }
-
-
-    /* =========================================
-       4. LOG (para pruebas)
-       En producción se guardará en DB
-    ========================================= */
-
-    console.log("Nueva solicitud recibida:")
-    console.log(solicitud)
-
-
-    /* =========================================
-       5. RESPUESTA AL CLIENTE
-    ========================================= */
+    await context.env.DB.prepare(
+      `INSERT INTO solicitudes (nombre,telefono,correo,mensaje,fecha,ip)
+       VALUES (?1,?2,?3,?4,?5,?6)`
+    )
+    .bind(nombre,telefono,correo,mensaje,fecha,ip)
+    .run()
 
     return new Response(
       JSON.stringify({
         ok:true,
-        message:"Solicitud recibida correctamente"
+        message:"Solicitud guardada correctamente"
       }),
       {
-        status:200,
-        headers:{
-          "Content-Type":"application/json"
-        }
+        headers:{ "Content-Type":"application/json" }
       }
     )
 
-  } catch(error){
+  }catch(error){
 
-    /* =========================================
-       6. MANEJO DE ERRORES
-    ========================================= */
-
-    console.error("Error en submit:", error)
+    console.error(error)
 
     return new Response(
       JSON.stringify({
         ok:false,
-        error:"Error interno del servidor"
+        error:"Error interno"
       }),
       {
         status:500,
-        headers:{
-          "Content-Type":"application/json"
-        }
+        headers:{ "Content-Type":"application/json" }
       }
     )
 
