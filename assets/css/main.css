@@ -1,7 +1,7 @@
-/* =========================
+/*=========================
    SERVITEC PMÁ – MAIN CSS
    Corporativo + Técnico Industrial
-========================= */
+=========================*/
 
 /* ========= TIPOGRAFÍA ========= */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
@@ -304,6 +304,58 @@ body.menu-open .theme-btn{
 .fade.show{
   opacity:1;
   transform:none;
+}
+
+/* =========================
+   FORMULARIO SOLICITUD
+========================= */
+
+.solicitud-box{
+  max-width:520px;
+  margin:0 auto;
+  background:#f9f9f6;
+  padding:40px;
+  border-radius:18px;
+
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+}
+
+/* inputs */
+
+.solicitud-box input,
+.solicitud-box textarea{
+  padding:14px 18px;
+  border-radius:10px;
+  border:1px solid #bbb;
+  font-size:1rem;
+  width:100%;
+}
+
+/* labels */
+
+.solicitud-box label{
+  font-weight:600;
+  color:#333;
+}
+
+/* botón */
+
+.solicitud-box button{
+  padding:14px;
+  border-radius:30px;
+  border:none;
+  cursor:pointer;
+  font-size:1rem;
+  background:var(--dorado);
+  color:#111;
+  font-weight:600;
+}
+
+.solicitud-box textarea{
+  min-height:120px;
+  resize:vertical;
 }
 
 /* ========= RESPONSIVE ========= */
