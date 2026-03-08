@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Solicitudes | ServiTec · Panamá</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" type="image/png" href="../assets/img/ServiTec.png">
+
+<link rel="stylesheet" href="../assets/css/main.css">
+
+</head>
+
+<body>
+
+<div class="theme-btn" onclick="toggleTheme()">☀️</div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+<!-- ================= MENU LATERAL ================= -->
+<div class="menu" id="menu">
+  <div class="back" onclick="toggleMenu()">☰</div>
+
+  <a href="https://instagram.com/" target="_blank">Instagram</a>
+
+  <div class="submenu-toggle" onclick="toggleSubmenu()">
+  Servicios ▾
+  </div>
+  <div id="submenu" style="display:none; padding-left:15px;">
+    <a href="../electricidad/index.html">Eléctrico 🔌</a>
+    <a href="../mecanica/index.html">Mecánico 👩‍🔧</a>
+    <a href="../desarrollo-web/index.html">Dev 💻</a>
+  </div>
+
+  <a href="../soporte/index.html">Soporte</a>
+  <a href="../sobre-nosotros/index.html">Sobre Nosotros</a>
+  <a href="../index.html">← Volver</a>
+
+  <!-- Número oculto -->
+  <a href="tel:+50769799261" style="display:none;">+507 6979-9261</a>
+</div>
+
+<header>
+  <h1>Evaluaciones</h1>
+</header>
+
+<section>
+  <h2>Solicitud de Evaluación</h2>
+
+  <div class="box">
+    <form id="solicitud" class="solicitud-box" method="post">
+      <label>Nombre</label>
+      <input name="nombre" placeholder="Nombre" required>
+      <label>Teléfono</label>
+      <input type="tel" name="telefono" placeholder="Número de teléfono (con código de país)" required>
+      <label>Describe el problema</label>
+      <textarea name="mensaje" placeholder="Describe el problema"></textarea>
+      <label>Correo electrónico</label>
+      <input type="email" name="correo" placeholder="Correo electrónico" required>
+      <button type="submit">Enviar solicitud</button>
+    </form>
+  </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  © 2026 ServiTec Pmá · Soluciones Técnicas Integrales · Panamá
+</footer>
+  
+<script src="../assets/js/app.js" defer></script>
+
+<script>
+
+  
+  document.getElementById("solicitud").addEventListener("submit", async (e) => {
+    e.preventDefault()
+    const form = e.target
+    const formData = new FormData(form)
+    try {
+      const res = await fetch("/api/submit",{
+        method:"POST",
+        body:formData
+      })
+      if(res.ok){
+        alert("Solicitud enviada correctamente")
+        form.reset()
+      }else{
+        alert("Error enviando solicitud")
+      }
+    }catch(error){
+      alert("No se pudo conectar con el servidor")
+    }
+    })
+</script>
+</body>
+</html>
