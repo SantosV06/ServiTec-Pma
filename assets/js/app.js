@@ -147,7 +147,7 @@ if(window.location.pathname.includes("/admin/panel")){
     const res = await fetch("/api/admin")
     const data = await res.json()
     const tbody = document.querySelector("#tabla tbody")
-     if(!rbody) return
+     if(!tbody) return
     tbody.innerHTML = ""
     data.forEach(row=>{
       const tr = document.createElement("tr")
