@@ -103,3 +103,34 @@ window.addEventListener("scroll", ()=>{
 
   lastScroll = currentScroll;
 });
+
+/*scritp del login*/
+document.getElementById("login").addEventListener("submit", async e=>{
+
+  e.preventDefault()
+
+  const password = e.target.password.value
+
+  const res = await fetch("/api/login",{
+    method:"POST",
+    headers:{
+      "Content-Type":"application/json"
+    },
+    body:JSON.stringify({password})
+  })
+
+  const data = await res.json()
+
+  if(data.ok){
+
+    localStorage.setItem("admin_token",data.token)
+
+    window.location.href="/admin/panel.html"
+
+  }else{
+
+    alert("Contraseña incorrecta")
+
+  }
+
+})
