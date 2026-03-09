@@ -144,3 +144,55 @@ document.getElementById("login").addEventListener("submit", async e=>{
     alert("Contraseña incorrecta")
   }
 })
+
+/* =========================
+   ADMIN PANEL
+========================= */
+
+if(window.location.pathname.includes("/admin/panel")){
+
+  if(localStorage.getItem("admin_token") !== "servitec-admin"){
+    window.location.href="/admin/login.html"
+  }
+
+  async function cargarSolicitudes(){
+
+    const res = await fetch("/api/admin")
+    const data = await res.json()
+
+    const tbody = document.querySelector("#tabla tbody")
+
+    tbody.innerHTML = ""
+
+    data.forEach(row=>{
+
+      const tr = document.createElement("tr")
+
+      tr.innerHTML = `
+        <td>${new Date(row.fecha).toLocaleString()}</td>
+        <td>${row.nombre}</td>
+        <td>${row.telefono}</td>
+        <td>${row.correo}</td>
+        <td>${row.mensaje || ""}</td>
+      `
+
+      tbody.appendChild(tr)
+
+    })
+
+  }
+
+  cargarSolicitudes()
+
+}
+
+/* =========================
+   LOGOUT
+========================= */
+
+function logout(){
+
+  localStorage.removeItem("admin_token")
+  window.location.href="/admin/login.html"
+
+}
