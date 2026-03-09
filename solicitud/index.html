@@ -70,29 +70,7 @@
   
 <script src="../assets/js/app.js" defer></script>
 
-<script>
-
-  
-  document.getElementById("solicitud").addEventListener("submit", async (e) => {
-    e.preventDefault()
-    const form = e.target
-    const formData = new FormData(form)
-    try {
-      const res = await fetch("/api/submit",{
-        method:"POST",
-        body:formData
-      })
-      if(res.ok){
-        alert("Solicitud enviada correctamente")
-        form.reset()
-      }else{
-        alert("Error enviando solicitud")
-      }
-    }catch(error){
-      alert("No se pudo conectar con el servidor")
-    }
-    })
-</script>
 </body>
 
 </html>
+
