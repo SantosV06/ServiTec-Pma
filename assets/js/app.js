@@ -9,16 +9,13 @@ if (savedTheme === "dark" && !document.body.classList.contains("casas")) {
     themeBtn.textContent = "🌙";
   }
 }
-
 function toggleSubmenu(){
   const sub = document.getElementById("submenu");
   const isOpen = sub.style.display === "block";
   sub.style.display = isOpen ? "none" : "block";
 }
-
 function toggleTheme(){
   document.body.classList.toggle("dark");
-
   const isDark = document.body.classList.contains("dark");
   localStorage.setItem("theme", isDark ? "dark" : "light");
   if (themeBtn) {
@@ -32,9 +29,7 @@ function toggleTheme(){
 function toggleMenu(){
   const menu = document.getElementById("menu");
   if (!menu) return;
-
   const isOpen = menu.classList.toggle("open");
-
   if(isOpen){
     document.body.classList.add("menu-open");
   } else {
@@ -47,7 +42,6 @@ document.querySelectorAll(".menu a").forEach(link=>{
   link.addEventListener("click", ()=>{
     const menu = document.getElementById("menu");
     if(!menu) return;
-
     menu.classList.remove("open");
     document.body.classList.remove("menu-open");
   });
@@ -75,32 +69,23 @@ const observer = new IntersectionObserver(entries=>{
     }
   });
 },{ threshold:0.2 });
-
 document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
 
 /* =========================
    AUTO-CLOSE MENU ON SCROLL (PC ONLY)
 ========================= */
-
 let lastScroll = 0;
-
 window.addEventListener("scroll", ()=>{
-
   const menu = document.getElementById("menu");
   if(!menu) return;
-
   const isDesktop = window.innerWidth >= 1024;
   const currentScroll = window.scrollY;
-
   if(isDesktop && menu.classList.contains("open")){
-
     if(Math.abs(currentScroll - lastScroll) > 20){
       menu.classList.remove("open");
       document.body.classList.remove("menu-open");
     }
-
   }
-
   lastScroll = currentScroll;
 });
 
@@ -148,26 +133,17 @@ document.getElementById("login").addEventListener("submit", async e=>{
 /* =========================
    ADMIN PANEL
 ========================= */
-
 if(window.location.pathname.includes("/admin/panel")){
-
   if(localStorage.getItem("admin_token") !== "servitec-admin"){
     window.location.href="/admin/login.html"
   }
-
   async function cargarSolicitudes(){
-
     const res = await fetch("/api/admin")
     const data = await res.json()
-
     const tbody = document.querySelector("#tabla tbody")
-
     tbody.innerHTML = ""
-
     data.forEach(row=>{
-
       const tr = document.createElement("tr")
-
       tr.innerHTML = `
         <td>${new Date(row.fecha).toLocaleString()}</td>
         <td>${row.nombre}</td>
@@ -175,23 +151,16 @@ if(window.location.pathname.includes("/admin/panel")){
         <td>${row.correo}</td>
         <td>${row.mensaje || ""}</td>
       `
-
       tbody.appendChild(tr)
-
     })
-
   }
-
   cargarSolicitudes()
-
 }
 
 /* =========================
    LOGOUT
 ========================= */
-
 function logout(){
-
   localStorage.removeItem("admin_token")
   window.location.href="/admin/login.html"
 
