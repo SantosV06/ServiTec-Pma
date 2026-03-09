@@ -90,11 +90,13 @@ window.addEventListener("scroll", ()=>{
 });
 
 /*script de solicitudes*/
-document.getElementById("solicitud").addEventListener("submit", async (e) => {
+const solicitudForm = document.getElementById("solicitud")
+if(solicitudForm){
+  solicitudForm.addEventListener("submit", async (e)=>{
     e.preventDefault()
     const form = e.target
     const formData = new FormData(form)
-    try {
+    try{
       const res = await fetch("/api/submit",{
         method:"POST",
         body:formData
@@ -108,27 +110,31 @@ document.getElementById("solicitud").addEventListener("submit", async (e) => {
     }catch(error){
       alert("No se pudo conectar con el servidor")
     }
-    })
-
-/*scritp del login*/
-document.getElementById("login").addEventListener("submit", async e=>{
-  e.preventDefault()
-  const password = e.target.password.value
-  const res = await fetch("/api/login",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({password})
   })
-  const data = await res.json()
-  if(data.ok){
-    localStorage.setItem("admin_token",data.token)
-    window.location.href="/admin/panel.html"
-  }else{
-    alert("Contraseña incorrecta")
-  }
-})
+}
+
+/*script del login*/
+const loginForm = document.getElementById("login")
+if(loginForm){
+  loginForm.addEventListener("submit", async e=>{
+    e.preventDefault()
+    const password = e.target.password.value
+    const res = await fetch("/api/login",{
+      method:"POST",
+      headers:{
+        "Content-Type":"application/json"
+      },
+      body:JSON.stringify({password})
+    })
+    const data = await res.json()
+    if(data.ok){
+      localStorage.setItem("admin_token",data.token)
+      window.location.href="/admin/panel.html"
+    }else{
+      alert("Contraseña incorrecta")
+    }
+  })
+}
 
 /* =========================
    ADMIN PANEL
@@ -141,6 +147,7 @@ if(window.location.pathname.includes("/admin/panel")){
     const res = await fetch("/api/admin")
     const data = await res.json()
     const tbody = document.querySelector("#tabla tbody")
+     if(!rbody) return
     tbody.innerHTML = ""
     data.forEach(row=>{
       const tr = document.createElement("tr")
