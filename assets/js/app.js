@@ -104,13 +104,31 @@ window.addEventListener("scroll", ()=>{
   lastScroll = currentScroll;
 });
 
+/*script de solicitudes*/
+document.getElementById("solicitud").addEventListener("submit", async (e) => {
+    e.preventDefault()
+    const form = e.target
+    const formData = new FormData(form)
+    try {
+      const res = await fetch("/api/submit",{
+        method:"POST",
+        body:formData
+      })
+      if(res.ok){
+        alert("Solicitud enviada correctamente")
+        form.reset()
+      }else{
+        alert("Error enviando solicitud")
+      }
+    }catch(error){
+      alert("No se pudo conectar con el servidor")
+    }
+    })
+
 /*scritp del login*/
 document.getElementById("login").addEventListener("submit", async e=>{
-
   e.preventDefault()
-
   const password = e.target.password.value
-
   const res = await fetch("/api/login",{
     method:"POST",
     headers:{
@@ -118,19 +136,11 @@ document.getElementById("login").addEventListener("submit", async e=>{
     },
     body:JSON.stringify({password})
   })
-
   const data = await res.json()
-
   if(data.ok){
-
     localStorage.setItem("admin_token",data.token)
-
     window.location.href="/admin/panel.html"
-
   }else{
-
     alert("Contraseña incorrecta")
-
   }
-
 })
