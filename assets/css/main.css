@@ -382,6 +382,15 @@ tr:hover{
   background:rgba(255,255,255,.05);
 }
 
+#tabla td, #tabla th{
+  padding:10px;
+  border-bottom:1px solid #ddd;
+}
+
+#tabla tr:hover{
+  background:#f5f5f5;
+}
+
 /* ========= RESPONSIVE ========= */
 @media(min-width:1024px){
 
@@ -427,4 +436,5 @@ tr:hover{
 
 
 }
+
 
