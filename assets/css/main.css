@@ -358,6 +358,30 @@ body.menu-open .theme-btn{
   resize:vertical;
 }
 
+/* =========================
+   ADMIN TABLA
+========================= */
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  color:white;
+}
+
+thead{
+  background:rgba(0,0,0,.7);
+}
+
+th,td{
+  padding:12px;
+  border-bottom:1px solid rgba(255,255,255,.1);
+  text-align:left;
+}
+
+tr:hover{
+  background:rgba(255,255,255,.05);
+}
+
 /* ========= RESPONSIVE ========= */
 @media(min-width:1024px){
 
@@ -403,3 +427,4 @@ body.menu-open .theme-btn{
 
 
 }
+
