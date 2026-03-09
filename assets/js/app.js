@@ -146,6 +146,10 @@ if(window.location.pathname.includes("/admin/panel")){
   async function cargarSolicitudes(){
     const res = await fetch("/api/admin")
     const data = await res.json()
+    const contador = document.getElementById("contador")
+       if(contador){
+          contador.textContent = "Solicitudes: " + data.length
+       }
     const tbody = document.querySelector("#tabla tbody")
      if(!tbody) return
     tbody.innerHTML = ""
