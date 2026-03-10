@@ -162,7 +162,7 @@ if(window.location.pathname.includes("/admin/panel")){
         <td>${row.correo}</td>
         <td>${row.mensaje || ""}</td>
         <td>
-        <a href="https://wa.me/${row.telefono}" target="_blank">📲</a>
+        <a href="https://wa.me/${row.telefono}" target="_blank">📞</a>
         </td>
       `
       tbody.appendChild(tr)
