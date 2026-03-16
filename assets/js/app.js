@@ -1,20 +1,18 @@
-//Mensajes de Alerta//
+/* =========================
+   MENSAJES DEL SISTEMA
+========================= */
 function showMsg(text,type="info"){
-
   const box = document.getElementById("msgBox")
   if(!box) return
-
   const div = document.createElement("div")
-
   div.className = "msg " + type
   div.textContent = text
-
   box.appendChild(div)
-
   setTimeout(()=>{
-    div.remove()
+    if(div && div.parentNode){
+      div.remove()
+    }
   },3000)
-
 }
 
 /* =========================
@@ -121,13 +119,13 @@ if(solicitudForm){
         body:formData
       })
       if(res.ok){
-        alert("Solicitud enviada correctamente")
+        showMsg("Solicitud enviada correctamente","ok")
         form.reset()
       }else{
-        alert("Error enviando solicitud")
+        showMsg("Error enviando solicitud","error")
       }
     }catch(error){
-      alert("No se pudo conectar con el servidor")
+      showMsg("No se pudo conectar","error")
     }
   })
 }
@@ -150,7 +148,7 @@ if(loginForm){
       localStorage.setItem("admin_token",data.token)
       window.location.href="/admin/panel.html"
     }else{
-      alert("Contraseña incorrecta")
+      showMsg("Contraseña incorrecta","error")
     }
   })
 }
