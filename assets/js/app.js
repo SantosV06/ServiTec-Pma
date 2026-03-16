@@ -1,3 +1,22 @@
+//Mensajes de Alerta//
+function showMsg(text,type="info"){
+
+  const box = document.getElementById("msgBox")
+  if(!box) return
+
+  const div = document.createElement("div")
+
+  div.className = "msg " + type
+  div.textContent = text
+
+  box.appendChild(div)
+
+  setTimeout(()=>{
+    div.remove()
+  },3000)
+
+}
+
 /* =========================
    THEME (persistente)
 ========================= */
