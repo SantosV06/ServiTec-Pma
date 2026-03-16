@@ -391,6 +391,53 @@ tr:hover{
   background:#f5f5f5;
 }
 
+/* =========================
+   MENSAJES DEL SISTEMA
+========================= */
+
+#msgBox{
+  position:fixed;
+  top:20px;
+  right:20px;
+  z-index:9999;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.msg{
+  padding:14px 18px;
+  border-radius:10px;
+  font-weight:600;
+  color:#fff;
+  min-width:220px;
+  box-shadow:0 5px 15px rgba(0,0,0,.4);
+  animation:fadeIn .3s ease;
+}
+
+.msg.ok{
+  background:#1e7f43;
+}
+
+.msg.error{
+  background:#a4161a;
+}
+
+.msg.info{
+  background:#5b2c83;
+}
+
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  to{
+    opacity:1;
+    transform:none;
+  }
+}
+
 /* ========= RESPONSIVE ========= */
 @media(min-width:1024px){
 
