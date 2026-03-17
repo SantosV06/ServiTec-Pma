@@ -160,15 +160,15 @@ if(window.location.pathname.includes("/admin/panel")){
   if(localStorage.getItem("admin_token") !== "servitec-admin"){
     window.location.href="/admin/login.html"
   }
-  async function cargarSolicitudes(){
+  const tbody = document.querySelector("#tabla tbody")
+  const contador = document.getElementById("contador")
+  async function verSolicitudes(){
     const res = await fetch("/api/admin")
     const data = await res.json()
-    const contador = document.getElementById("contador")
-       if(contador){
-          contador.textContent = "Solicitudes: " + data.length
-       }
-    const tbody = document.querySelector("#tabla tbody")
-     if(!tbody) return
+    if(contador){
+      contador.textContent =
+        "Solicitudes: " + data.length
+    }
     tbody.innerHTML = ""
     data.forEach(row=>{
       const tr = document.createElement("tr")
@@ -179,13 +179,37 @@ if(window.location.pathname.includes("/admin/panel")){
         <td>${row.correo}</td>
         <td>${row.mensaje || ""}</td>
         <td>
-        <a href="https://wa.me/${row.telefono}" target="_blank">📞</a>
+        <a href="https://wa.me/${row.telefono}" target="_blank">
+        📞
+        </a>
         </td>
       `
       tbody.appendChild(tr)
     })
   }
-  cargarSolicitudes()
+  async function verSoporte(){
+    const res =
+      await fetch("/api/admin-soporte")
+    const data = await res.json()
+    if(contador){
+      contador.textContent =
+        "Soporte: " + data.length
+    }
+    tbody.innerHTML = ""
+    data.forEach(row=>{
+      const tr = document.createElement("tr")
+      tr.innerHTML = `
+        <td>${new Date(row.fecha).toLocaleString()}</td>
+        <td>${row.nombre}</td>
+        <td>${row.correo}</td>
+        <td>${row.tipo}</td>
+        <td>${row.mensaje}</td>
+      `
+      tbody.appendChild(tr)
+    })
+  }
+  // cargar por defecto
+  verSolicitudes()
 }
 
 /* =========================
