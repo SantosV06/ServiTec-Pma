@@ -196,3 +196,27 @@ function logout(){
   window.location.href="../index.html"
 
 }
+
+/*script soporte*/
+const soporteForm = document.getElementById("soporte")
+if(soporteForm){
+  soporteForm.addEventListener("submit", async (e)=>{
+    e.preventDefault()
+    const form = e.target
+    const formData = new FormData(form)
+    try{
+      const res = await fetch("/api/soporte",{
+        method:"POST",
+        body:formData
+      })
+      if(res.ok){
+        showMsg("Mensaje enviado correctamente","ok")
+        form.reset()
+      }else{
+        showMsg("Error enviando mensaje","error")
+      }
+    }catch{
+      showMsg("No se pudo conectar","error")
+    }
+  })
+}
