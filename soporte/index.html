@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+
+<title>Soporte | ServiTec</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="icon" href="../assets/img/ServiTec.png">
+
+<link rel="stylesheet" href="../assets/css/main.css">
+
+</head>
+
+<body>
+
+<div class="theme-btn" onclick="toggleTheme()">☀️</div>
+<div class="menu-btn" onclick="toggleMenu()">☰</div>
+
+
+<div class="menu" id="menu">
+
+<div class="back" onclick="toggleMenu()">☰</div>
+
+<a href="../index.html">Inicio</a>
+
+<div class="submenu-toggle" onclick="toggleSubmenu()">
+Servicios ▾
+</div>
+
+<div id="submenu" style="display:none; padding-left:15px;">
+
+<a href="../electricidad/index.html">Eléctrico 🔌</a>
+<a href="../mecanica/index.html">Mecánico 👩‍🔧</a>
+<a href="../desarrollo-web/index.html">Dev 💻</a>
+
+</div>
+
+<a href="../soporte/index.html">Soporte</a>
+<a href="../sobre-nosotros/index.html">Sobre nosotros</a>
+
+</div>
+
+
+
+<header>
+
+<h1>Centro de soporte</h1>
+
+</header>
+
+
+
+<section class="fade">
+
+<h2>Envíanos tu consulta</h2>
+
+<div class="box">
+
+Si tienes preguntas,
+detectaste algún error en el sitio
+o deseas enviar una sugerencia,
+puedes escribirnos mediante este formulario.
+
+</div>
+
+</section>
+
+
+
+<section class="fade">
+
+<div class="box">
+
+<form id="soporte" class="solicitud-box">
+
+<label>Nombre</label>
+<input name="nombre" required>
+
+<label>Correo electrónico</label>
+<input type="email" name="correo" required>
+
+<label>Tipo de mensaje</label>
+
+<select name="tipo">
+
+<option value="consulta">Consulta</option>
+<option value="error">Reportar error</option>
+<option value="sugerencia">Sugerencia</option>
+<option value="otro">Otro</option>
+
+</select>
+
+<label>Mensaje</label>
+
+<textarea name="mensaje" required></textarea>
+
+<button type="submit">
+
+Enviar mensaje
+
+</button>
+
+</form>
+
+</div>
+
+</section>
+
+
+
+<footer>
+
+© 2026 ServiTec Pmá · Soluciones Técnicas Integrales
+
+</footer>
+
+<script src="../assets/js/app.js" defer></script>
+
+<div id="msgBox"></div>
+
+</body>
+</html>
