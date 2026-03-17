@@ -397,22 +397,25 @@ tr:hover{
 
 #msgBox{
   position:fixed;
-  top:20px;
-  right:20px;
+  top:50%;
+  right:50%;
+  transform:translate(-50%,-50%);
   z-index:9999;
   display:flex;
   flex-direction:column;
   gap:10px;
+  align-items:center;
 }
 
 .msg{
-  padding:14px 18px;
-  border-radius:10px;
+  padding:16px 22px;
+  border-radius:12px;
   font-weight:600;
   color:#fff;
-  min-width:220px;
-  box-shadow:0 5px 15px rgba(0,0,0,.4);
-  animation:fadeIn .3s ease;
+  min-width:260px;
+  text-align:center;
+  box-shadow:0 10px 30px rgba(0,0,0,.6);
+  animation:msgPop .25s ease;
 }
 
 .msg.ok{
@@ -427,14 +430,14 @@ tr:hover{
   background:#5b2c83;
 }
 
-@keyframes fadeIn{
+@keyframes msgPop{
   from{
     opacity:0;
-    transform:translateY(-10px);
+    transform:scale(-9);
   }
   to{
     opacity:1;
-    transform:none;
+    transform:scale(1);
   }
 }
 
