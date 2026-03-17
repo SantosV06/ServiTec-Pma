@@ -162,7 +162,7 @@ if(window.location.pathname.includes("/admin/panel")){
   }
   const tbody = document.querySelector("#tabla tbody")
   const contador = document.getElementById("contador")
-  async function verSolicitudes(){
+  window.verSolicitudes = async function (){
     const res = await fetch("/api/admin")
     const data = await res.json()
     if(contador){
@@ -187,7 +187,7 @@ if(window.location.pathname.includes("/admin/panel")){
       tbody.appendChild(tr)
     })
   }
-  async function verSoporte(){
+  window.verSoporte = async function(){
     const res =
       await fetch("/api/admin-soporte")
     const data = await res.json()
