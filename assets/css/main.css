@@ -358,15 +358,6 @@ body.menu-open .theme-btn{
    padding-right:35px;
 }
 
-/* modo oscuro */
-.dark .solicitud-box input,
-.dark .solicitud-box textarea,
-.dark .solicitud-box select{
-   background:#222;
-   color:#fff;
-   border:1px solid #555;
-}
-
 .dark .solicitud-box select{
    background-image:url("data:image/svg+xml;utf8,<svg fill='white' height='20' viewBox='0 0 20 20' width='20' xmlns='http://www.w3.org/2000/svg'><path d='M5 7l5 5 5-5z'/></svg>");
 }
