@@ -340,6 +340,13 @@ body.menu-open .theme-btn{
   color:#333;
 }
 
+/* small */
+
+.solicitud-box small{
+  font-weight:600;
+  color:#3333;
+}
+
 /* botón */
 
 .solicitud-box button{
