@@ -217,7 +217,7 @@ if(window.location.pathname.includes("/admin/panel")){
 ========================= */
 function logout(){
   localStorage.removeItem("admin_token")
-  window.location.href="../index.html"
+  window.location.href="login.html"
 
 }
 
