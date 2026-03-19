@@ -163,6 +163,16 @@ if(window.location.pathname.includes("/admin/panel")){
   const tbody = document.querySelector("#tabla tbody")
   const contador = document.getElementById("contador")
   window.verSolicitudes = async function (){
+     thead.innerHTML = `
+     <tr>
+     <th>Fecha</th>
+     <th>Nombre</th>
+     <th>Teléfono</th>
+     <th>Correo</th>
+     <th>Mensaje</th>
+     <th>Acción</th>
+     </tr>
+    `
     const res = await fetch("/api/admin")
     const data = await res.json()
     if(contador){
@@ -183,17 +193,24 @@ if(window.location.pathname.includes("/admin/panel")){
         📞
         </a>
         </td>
-      `
+        `
       tbody.appendChild(tr)
     })
   }
   window.verSoporte = async function(){
-    const res =
-      await fetch("/api/admin-soporte")
+     thead.innerHTML = `
+     <tr>
+     <th>Fecha</th>
+     <th>Nombre</th>
+     <th>Correo</th>
+     <th>Tipo</th>
+     <th>Mensaje</th>
+     </tr>
+     `
+    const res = await fetch("/api/admin-soporte")
     const data = await res.json()
     if(contador){
-      contador.textContent =
-        "Soporte: " + data.length
+      contador.textContent = "Soporte: " + data.length
     }
     tbody.innerHTML = ""
     data.forEach(row=>{
