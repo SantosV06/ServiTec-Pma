@@ -7,20 +7,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
 
 :root{
-  --morado:#5b2c83;
-  --dorado:#d4af37;
-  --verde:#1e7f43;
-  --negro:#111111;
-  --rojo:#a4161a;
-  --blanco:#ffffff;
-  --gris:#f4f6f8;
+   --morado:#5b2c83;
+   --dorado:#d4af37;
+   --verde:#1e7f43;
+   --negro:#111111;
+   --rojo:#a4161a;
+   --blanco:#ffffff;
+   --gris:#f4f6f8;
 }
 
 /* ========= RESET ========= */
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+   box-sizing:border-box;
+   margin:0;
+   padding:0;
 }
 
 html{
@@ -343,8 +343,9 @@ body.menu-open .theme-btn{
 /* small */
 
 .solicitud-box small{
-  font-weight:600;
-  color:#3333;
+   font-size: smaller;
+   font-weight:600;
+   color:#3333;
 }
 
 /* botón */
