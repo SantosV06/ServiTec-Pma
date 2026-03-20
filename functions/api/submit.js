@@ -28,6 +28,29 @@ export async function onRequestPost(context){
     )
     .bind(nombre,telefono,correo,mensaje,fecha,ip)
     .run()
+    /* ENVIAR EMAIL (RESEND) */
+    const apiKey = context.env.RESEND_API_KEY
+    const html = `
+    <h2>Nueva solicitud</h2>
+    <b>Nombre:</b> ${nombre} <br>
+    <b>Teléfono:</b> ${telefono} <br>
+    <b>Correo:</b> ${correo} <br>
+    <b>Mensaje:</b> ${mensaje} <br>
+    <b>Fecha:</b> ${fecha}
+    `
+      await fetch("https://api.resend.com/emails",{
+        method:"POST",
+        headers:{
+          "Authorization":`Bearer ${apiKey}`,
+          "Content-Type":"application/json"
+        },body:JSON.stringify({
+          from:"onboarding@resend.dev",
+          to:"didiersanto686@gmail.com",
+          subject:"Nueva solicitud ServiTec",
+          html:html
+        })
+      }
+    )
     return new Response(
       JSON.stringify({
         ok:true,
