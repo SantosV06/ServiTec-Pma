@@ -1,72 +1,60 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Solicitudes | ServiTec · Panamá</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/png" href="../assets/img/ServiTec.png">
-  <link rel="stylesheet" href="../assets/css/main.css">
-</head>
-
-<body>
-
-<div class="theme-btn" onclick="toggleTheme()">☀️</div>
-<div class="menu-btn" onclick="toggleMenu()">☰</div>
-
-<!-- ================= MENU LATERAL ================= -->
-<div class="menu" id="menu">
-  <div class="back" onclick="toggleMenu()">☰</div>
-
-  <a href="https://instagram.com/" target="_blank">Instagram</a>
-
-  <div class="submenu-toggle" onclick="toggleSubmenu()">
-  Servicios ▾
-  </div>
-  <div id="submenu" style="display:none; padding-left:15px;">
-    <a href="../electricidad/index.html">Eléctrico 🔌</a>
-    <a href="../mecanica/index.html">Mecánico 👩‍🔧</a>
-    <a href="../desarrollo-web/index.html">Dev 💻</a>
-  </div>
-
-  <a href="../soporte/index.html">Soporte</a>
-  <a href="../sobre-nosotros/index.html">Sobre Nosotros</a>
-  <a href="../admin/login.html">Ingresar</a>
-  <a href="../index.html">← Volver</a>
-</div>
-
-<header>
-  <h1>Evaluaciones</h1>
-</header>
-
-<section>
-  <h2>Solicitud de Evaluación</h2>
-
-  <div class="box">
-    <form id="solicitud" class="solicitud-box" method="post">
-      <label>Nombre</label>
-      <input name="nombre" placeholder="Nombre" required>
-      <label>Teléfono</label>
-      <input type="tel" name="telefono" placeholder="Número con código de país (pegado)" required>
-      <small>Ejemplo: +50769896525</small>
-      <label>Describe el problema</label>
-      <textarea name="mensaje" placeholder="Describe el problema"></textarea>
-      <label>Correo electrónico</label>
-      <input type="email" name="correo" placeholder="Correo electrónico" required>
-      <button type="submit">Enviar solicitud</button>
-    </form>
-  </div>
-
-</section>
-
-<!-- ================= FOOTER ================= -->
-<footer>
-  © 2026 ServiTec Pmá · Soluciones Técnicas Integrales · Panamá
-</footer>
+  <head>
+    <meta charset="UTF-8">
+    <title>Solicitudes | ServiTec · Panamá</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="../assets/img/ServiTec.png">
+    <link rel="stylesheet" href="../assets/css/main.css">
+  </head>
   
-<script src="../assets/js/app.js" defer></script>
-
-<div id="msgBox"></div>
-
-</body>
-
+  <body>
+    <div class="theme-btn" onclick="toggleTheme()">☀️</div>
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <!-- ================= MENU LATERAL ================= -->
+    <div class="menu" id="menu">
+      <div class="back" onclick="toggleMenu()">☰</div>
+      <a href="../index.html">Inicio</a>
+      <a href="https://instagram.com/" target="_blank">Instagram</a>
+      <div class="submenu-toggle" onclick="toggleSubmenu()">
+        Servicios ▾
+      </div>
+      <div id="submenu" style="display:none; padding-left:15px;">
+        <a href="../electricidad/index.html">Eléctrico 🔌</a>
+        <a href="../mecanica/index.html">Mecánico 👩‍🔧</a>
+        <a href="../desarrollo-web/index.html">Dev 💻</a>
+      </div>
+      <a href="../soporte/index.html">Soporte</a>
+      <a href="../sobre-nosotros/index.html">Sobre Nosotros</a>
+      <a href="../admin/login.html">Ingresar</a>
+    </div>
+    
+    <header>
+      <h1>Evaluaciones</h1>
+    </header>
+    
+    <section>
+      <h2>Solicitud de Evaluación</h2>
+      <div class="box">
+        <form id="solicitud" class="solicitud-box" method="post">
+          <label>Nombre</label>
+          <input name="nombre" placeholder="Nombre" required>
+          <label>Teléfono</label>
+          <input type="tel" name="telefono" placeholder="Número con código de país (pegado)" required>
+          <small>Ejemplo: +50769896525</small>
+          <label>Describe el problema</label>
+          <textarea name="mensaje" placeholder="Describe el problema"></textarea>
+          <label>Correo electrónico</label>
+          <input type="email" name="correo" placeholder="Correo electrónico" required>
+          <button type="submit">Enviar solicitud</button>
+        </form>
+      </div>
+    </section>
+    <!-- ================= FOOTER ================= -->
+    <footer>
+      © 2026 ServiTec Pmá · Soluciones Técnicas Integrales · Panamá
+    </footer>
+    <script src="../assets/js/app.js" defer></script>
+    <div id="msgBox"></div>
+  </body>
 </html>
