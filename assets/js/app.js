@@ -170,6 +170,7 @@ if(window.location.pathname.includes("/admin/panel")){
      <th>Teléfono</th>
      <th>Correo</th>
      <th>Mensaje</th>
+     <th>Estado</th>
      <th>Acción</th>
      </tr>
     `
@@ -188,6 +189,22 @@ if(window.location.pathname.includes("/admin/panel")){
         <td>${row.telefono}</td>
         <td>${row.correo}</td>
         <td>${row.mensaje || ""}</td>
+        <td>
+        <select onchange="cambiarEstado(${row.id}, this.value)">
+        <option value="pendiente"
+        ${row.estado==="pendiente"?"selected":""}>
+        Pendiente
+        </option>
+        <option value="contactado"
+        ${row.estado==="contactado"?"selected":""}>
+        Contactado
+        </option>
+        <option value="hecho"
+        ${row.estado==="hecho"?"selected":""}>
+        Hecho
+        </option>
+        </select>
+        </td>
         <td>
         <a href="https://wa.me/${row.telefono}" target="_blank">
         📞
@@ -227,6 +244,20 @@ if(window.location.pathname.includes("/admin/panel")){
   }
   // cargar por defecto
   verSolicitudes()
+}
+
+/* Función de cambiar Estado*/
+window.cambiarEstado = async function(id, estado){
+   await fetch("/api/estado",{
+      method:"POST",
+      headers:{
+         "Content-Type":"application/json"
+      },
+      body: JSON.stringify({
+         id,
+         estado
+      })
+   })
 }
 
 /* =========================
