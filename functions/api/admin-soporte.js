@@ -4,7 +4,7 @@ export async function onRequestGet(context){
 
     const { results } = await context.env.DB.prepare(
 
-      `SELECT id, nombre, correo, tipo, mensaje, fecha
+      `SELECT id, nombre, correo, tipo, mensaje, fecha, estado
        FROM soporte
        ORDER BY fecha DESC
        LIMIT 100`
