@@ -48,8 +48,8 @@ export async function onRequestPost(context){
     text-align:center;
     ">
     <img src="https://servitec-pma.pages.dev/assets/img/LogoServiTec.png"
-    <h2>Panamá</h2>
     style="height:50px"><br>
+    <h2>Panamá</h2>
     Nueva solicitud recibida
     </div>
     <div style="padding:20px">
