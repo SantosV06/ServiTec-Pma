@@ -424,6 +424,36 @@ tr:hover{
   background:#f5f5f5;
 }
 
+/* ===== ESTADOS PANEL ===== */
+
+.estado-select{
+  padding:6px 10px;
+  border-radius:6px;
+  border:1px solid #ccc;
+  font-weight:bold;
+}
+
+/* pendiente */
+.estado-pendiente{
+  background:#fff3cd;
+  color:#856404;
+  border-color:#ffeeba;
+}
+
+/* contactado */
+.estado-contactado{
+  background:#cce5ff;
+  color:#004085;
+  border-color:#b8daff;
+}
+
+/* hecho */
+.estado-hecho{
+  background:#d4edda;
+  color:#155724;
+  border-color:#c3e6cb;
+}
+
 /* =========================
    MENSAJES DEL SISTEMA
 ========================= */
