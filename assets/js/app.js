@@ -190,7 +190,7 @@ if(window.location.pathname.includes("/admin/panel")){
         <td>${row.correo}</td>
         <td>${row.mensaje || ""}</td>
         <td>
-        <select onchange="cambiarEstado(${row.id}, this.value)">
+        <select class="estado-select" onchange="cambiarEstado(${row.id}, this.value, this)">
         <option value="pendiente"
         ${row.estado==="pendiente"?"selected":""}>
         Pendiente
