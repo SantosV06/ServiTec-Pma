@@ -212,6 +212,12 @@ if(window.location.pathname.includes("/admin/panel")){
         </td>
         `
       tbody.appendChild(tr)
+         const select = tr.querySelector("select")
+            if(select){
+  select.classList.add(
+    "estado-" + (row.estado || "pendiente")
+  )
+}
     })
   }
   window.verSoporte = async function(){
@@ -247,7 +253,7 @@ if(window.location.pathname.includes("/admin/panel")){
 }
 
 /* Función de cambiar Estado*/
-window.cambiarEstado = async function(id, estado){
+window.cambiarEstado = async function(id, estado, el){
    await fetch("/api/estado",{
       method:"POST",
       headers:{
@@ -258,6 +264,16 @@ window.cambiarEstado = async function(id, estado){
          estado
       })
    })
+   if(el){
+      el.classList.remove(
+         "estado-pendiente",
+         "estado-contactado",
+         "estado-hecho"
+      )
+         el.classList.add(
+            "estado-" + estado
+         )
+   }
 }
 
 /* =========================
