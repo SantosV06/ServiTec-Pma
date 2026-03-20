@@ -22,13 +22,14 @@ export async function onRequestPost(context){
     const ip = context.request.headers.get("CF-Connecting-IP") || "unknown"
     const country = context.request.headers.get("CF-IPCountry") || "unknown"
     /* guardar en D1 */
-    await context.env.DB.prepare(
+    const result = await context.env.DB.prepare(
       `INSERT INTO solicitudes
        (nombre,telefono,correo,mensaje,fecha,ip)
        VALUES (?1,?2,?3,?4,?5,?6)`
     )
     .bind(nombre,telefono,correo,mensaje,fecha,ip)
     .run()
+    const id = result.meta.last_row_id
     /* ENVIAR EMAIL (RESEND) */
     const apiKey = context.env.RESEND_API_KEY
     const html = `
@@ -50,7 +51,7 @@ export async function onRequestPost(context){
     <img src="https://servitec-pma.pages.dev/assets/img/ServiTec.png"
     style="height:50px"><br>
     <h2>ServiTec Pma</h2>
-    Nueva solicitud recibida
+    Nueva solicitud #${id}
     </div>
     <div style="padding:20px">
     <b>Nombre:</b> ${nombre}<br><br>
@@ -94,7 +95,7 @@ export async function onRequestPost(context){
         },body:JSON.stringify({
           from:"onboarding@resend.dev",
           to:["didiersanto686@gmail.com"],
-          subject:"Nueva solicitud ServiTec",
+          subject:`Nueva solicitud #${id} | ServiTec`,
           html:html
         })
       }
