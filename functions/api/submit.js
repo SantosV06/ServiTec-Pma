@@ -20,6 +20,7 @@ export async function onRequestPost(context){
     }
     const fecha = new Date().toISOString()
     const ip = context.request.headers.get("CF-Connecting-IP") || "unknown"
+    const country = context.request.headers.get("CF-IPCountry") || "unknown"
     /* guardar en D1 */
     await context.env.DB.prepare(
       `INSERT INTO solicitudes
@@ -31,12 +32,59 @@ export async function onRequestPost(context){
     /* ENVIAR EMAIL (RESEND) */
     const apiKey = context.env.RESEND_API_KEY
     const html = `
-    <h2>Nueva solicitud</h2>
-    <b>Nombre:</b> ${nombre} <br>
-    <b>Teléfono:</b> ${telefono} <br>
-    <b>Correo:</b> ${correo} <br>
-    <b>Mensaje:</b> ${mensaje} <br>
-    <b>Fecha:</b> ${fecha}
+    <div style="font-family:Arial,sans-serif;background:#f4f4f4;padding:20px">
+    <div style="
+    max-width:600px;
+    margin:auto;
+    background:#ffffff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+    ">
+    <div style="
+    background:#0b3d91;
+    color:white;
+    padding:15px;
+    text-align:center;
+    ">
+    <img src="https://servitec-pma.pages.dev/assets/img/ServiTec.png"
+    style="height:50px"><br>
+    <h2>ServiTec Pmá</h2>
+    Nueva solicitud recibida
+    </div>
+    <div style="padding:20px">
+    <b>Nombre:</b> ${nombre}<br><br>
+    <b>Teléfono:</b> ${telefono}<br><br>
+    <b>Correo:</b> ${correo}<br><br>
+    <b>Mensaje:</b><br>
+    ${mensaje}<br><br>
+    <b>Fecha:</b> ${fecha}<br>
+    <b>IP:</b> ${ip}<br>
+    <b>País:</b> ${country}<br><br>
+    <a href="https://wa.me/${telefono}"
+    style="
+    display:inline-block;
+    padding:10px 15px;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    border-radius:5px;
+    font-weight:bold;
+    ">
+    Abrir WhatsApp
+    </a>
+    </div>
+    <div style="
+    background:#eee;
+    padding:10px;
+    text-align:center;
+    font-size:12px;
+    color:#555;
+    ">
+    Sistema automático ServiTec
+    </div>
+    </div>
+    </div>
     `
       await fetch("https://api.resend.com/emails",{
         method:"POST",
