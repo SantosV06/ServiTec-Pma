@@ -94,7 +94,7 @@ export async function onRequestPost(context){
           "Content-Type":"application/json"
         },body:JSON.stringify({
           from:"onboarding@resend.dev",
-          to:["didiersanto686@gmail.com"],
+          to:["felipe.santo@foundationvne.com"],
           subject:`Nueva solicitud #${id} | ServiTec`,
           html:html
         })
