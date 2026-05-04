@@ -254,7 +254,7 @@ if(window.location.pathname.includes("/admin/panel")){
 
 /* Función de cambiar Estado*/
 window.cambiarEstado = async function(id, estado, el){
-   await fetch("/api/estado",{
+   await fetch("/api/estados",{
       method:"POST",
       headers:{
          "Content-Type":"application/json"
