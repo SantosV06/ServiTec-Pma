@@ -112,20 +112,29 @@ if(solicitudForm){
   solicitudForm.addEventListener("submit", async (e)=>{
     e.preventDefault()
     const form = e.target
+    const btn = form.querySelector("button[type=submit]")
+    if(btn.disabled) return
+    btn.disabled = true
+    const originalText = btn.textContent
+    btn.textContent = "Enviando..."
     const formData = new FormData(form)
     try{
-      const res = await fetch("/api/submit",{
-        method:"POST",
-        body:formData
-      })
-      if(res.ok){
-        showMsg("Solicitud enviada correctamente","ok")
-        form.reset()
-      }else{
-        showMsg("Error enviando solicitud","error")
-      }
+    const res = await fetch("/api/submit",{
+      method:"POST",
+      body:formData
+    })
+    if(res.ok){
+    showMsg("Solicitud enviada correctamente","ok")
+    form.reset()
+    }else{
+    showMsg("Error enviando solicitud","error")
+       btn.disabled = false
+       btn.textContent = originalText
+    }
     }catch(error){
       showMsg("No se pudo conectar","error")
+       btn.disabled = false
+       btn.textContent = originalText
     }
   })
 }
@@ -291,6 +300,11 @@ if(soporteForm){
   soporteForm.addEventListener("submit", async (e)=>{
     e.preventDefault()
     const form = e.target
+    const btn = form.querySelector("button[type=sumit]")
+    if(btn.disable) return
+    btn.disabled = true
+    const originalText = btn.textContent
+    btn.textContent = "Enviando..."
     const formData = new FormData(form)
     try{
       const res = await fetch("/api/soporte",{
@@ -302,9 +316,13 @@ if(soporteForm){
         form.reset()
       }else{
         showMsg("Error enviando mensaje","error")
+        btn.disable = false
+        btn.textContent = originalText
       }
     }catch{
-      showMsg("No se pudo conectar","error")
+        showMsg("No se pudo conectar","error")
+        btn.disable = false
+        btn.textContent = originalText
     }
   })
 }
